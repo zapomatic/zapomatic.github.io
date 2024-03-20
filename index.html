@@ -21,10 +21,9 @@
         font-family: monospace;
         word-break: normal;
       }
-      p {
+      .glow {
         color: transparent;
         margin: 0;
-        font-size: 180%;
         font-weight: normal;
         line-height: 1.3;
         text-shadow: 0 0 0px rgba(255, 255, 255, 0.4),
@@ -38,6 +37,7 @@
       }
       header {
         font-family: "VT323", monospace;
+        font-size: 180%;
       }
       footer {
         margin: 0;
@@ -53,7 +53,7 @@
       }
       #content {
         visibility: hidden;
-        margin-bottom: 50px;
+        margin: 5px 0 50px;
       }
       #content ul li {
         visibility: hidden;
@@ -61,17 +61,21 @@
       .key {
         word-break: break-all;
       }
-      .shell {
+      .card {
         background-color: #000;
         color: rgb(65, 171, 105);
-        padding: 10px;
-        margin: 10px auto;
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
         position: relative;
         z-index: 2;
-        width: auto;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+        margin: 0 0 10px 0;
       }
-      .shell hr {
+      .card-header {
+        border-bottom: 1px solid #333;
+      }
+      .card-body {
+        padding: 10px;
+      }
+      .card hr {
         margin: 0.5rem 0;
       }
       a:link,
@@ -263,95 +267,156 @@
     <div class="crt">
       <header class="terminal">
         <div>
-          <p>
+          <p class="glow">
             ⚡︎ <span id="loadingtext"></span
             ><span id="cursor" class="cursorOn">█</span>
           </p>
         </div>
       </header>
 
-      <div id="content" class="shell">
-        <ul>
-          <li>
-            <i class="fa fa-bolt"></i> Zap-O-Matic Lightning Routing Node:
-            <a
-              href="https://amboss.space/node/026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2"
-              target="offsite"
-              >Amboss</a
-            >
-            |
-            <a
-              href="https://lightningnetwork.plus/nodes/026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2"
-              target="offsite"
-              >LN+</a
-            >
-            |
-            <a
-              href="https://terminal.lightning.engineering/explore/026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2/"
-              target="offline"
-              >Terminal</a
-            >
-          </li>
-          <li><hr /></li>
-          <li>
-            <i class="fa-solid fa-key"></i> PUBKEY:
-            <span class="key"
-              >026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2</span
-            >
-            <button
-              onClick="copyPub(this)"
-              type="button"
-              class="btn btn-sm btn-outline-secondary"
-              data-bs-toggle="tooltip"
-              title="copy pubkey"
-            >
-              <i class="fa-solid fa-copy"></i> copy
-            </button>
-          </li>
-          <li>
-            <i class="fa-solid fa-globe"></i> IPv4: @5.78.104.214:38297
-            <button
-              onClick="copyIP(this)"
-              type="button"
-              class="btn btn-sm btn-outline-secondary"
-              data-bs-toggle="tooltip"
-              title="copy full ipv4 connection string"
-            >
-              <i class="fa-solid fa-copy"></i> copy
-            </button>
-          </li>
-          <li>
-            <i class="fa-solid fa-user-secret"></i> TOR:
-            <span class="key"
-              >@adbn42l4svmgz6i44s4jt2pqngyq5h6bpz6frcgv7yxvf3hkukftheqd.onion:9735</span
-            >
-            <button
-              onClick="copyTor(this)"
-              type="button"
-              class="btn btn-sm btn-outline-secondary"
-              data-bs-toggle="tooltip"
-              title="copy full TOR connection string"
-            >
-              <i class="fa-solid fa-copy"></i> copy
-            </button>
-          </li>
-          <li>
-            <i class="fa-brands fa-telegram"></i> TELEGRAM:
-            <a href="https://t.me/zap_matic" target="offsite">@zap_matic</a>
-          </li>
-          <li>
-            <i class="fa-brands fa-twitter"></i> X:
-            <a href="https://twitter.com/zap_matic" target="offsite"
-              >@zap_matic</a
-            >
-          </li>
-          <li>
-            <i class="fa-solid fa-mask"></i> NOSTR:
-            <span class="key"
-              >npub1tvlw9qe0zew2lv0e8ru6qe4fk9ytaycsueyagpt53hxdrg457fdsuzcnqq</span
-            >
-          </li>
-        </ul>
+      <div id="content">
+        <div class="card">
+          <div class="card-body">
+            <ul>
+              <li>
+                <span class="glow"
+                  ><i class="fa fa-bolt"></i> Zap-O-Matic Lightning Routing
+                  Node:</span
+                >
+                <a
+                  href="https://amboss.space/node/026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2"
+                  target="offsite"
+                  >Amboss</a
+                >
+                |
+                <a
+                  href="https://lightningnetwork.plus/nodes/026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2"
+                  target="offsite"
+                  >LN+</a
+                >
+                |
+                <a
+                  href="https://terminal.lightning.engineering/explore/026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2/"
+                  target="offline"
+                  >Terminal</a
+                >
+              </li>
+              <li><hr /></li>
+              <li>
+                <i class="fa-solid fa-key"></i> PUBKEY:
+                <span class="key"
+                  >026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2</span
+                >
+                <button
+                  onClick="copyPub(this)"
+                  type="button"
+                  class="btn btn-sm btn-outline-secondary"
+                  data-bs-toggle="tooltip"
+                  title="copy pubkey"
+                >
+                  <i class="fa-solid fa-copy"></i> copy
+                </button>
+              </li>
+              <li>
+                <i class="fa-solid fa-globe"></i> IPv4: @5.78.104.214:38297
+                <button
+                  onClick="copyIP(this)"
+                  type="button"
+                  class="btn btn-sm btn-outline-secondary"
+                  data-bs-toggle="tooltip"
+                  title="copy full ipv4 connection string"
+                >
+                  <i class="fa-solid fa-copy"></i> copy
+                </button>
+              </li>
+              <li>
+                <i class="fa-solid fa-user-secret"></i> TOR:
+                <span class="key"
+                  >@adbn42l4svmgz6i44s4jt2pqngyq5h6bpz6frcgv7yxvf3hkukftheqd.onion:9735</span
+                >
+                <button
+                  onClick="copyTor(this)"
+                  type="button"
+                  class="btn btn-sm btn-outline-secondary"
+                  data-bs-toggle="tooltip"
+                  title="copy full TOR connection string"
+                >
+                  <i class="fa-solid fa-copy"></i> copy
+                </button>
+              </li>
+              <li>
+                <i class="fa-brands fa-telegram"></i> TELEGRAM:
+                <a href="https://t.me/zap_matic" target="offsite">@zap_matic</a>
+              </li>
+              <li>
+                <i class="fa-brands fa-twitter"></i> X:
+                <a href="https://twitter.com/zap_matic" target="offsite"
+                  >@zap_matic</a
+                >
+              </li>
+              <li>
+                <i class="fa-solid fa-mask"></i> NOSTR:
+                <span class="key"
+                  ><a
+                    href="https://primal.net/p/npub1tvlw9qe0zew2lv0e8ru6qe4fk9ytaycsueyagpt53hxdrg457fdsuzcnqq"
+                    tartget="offsite"
+                    >npub1tvlw9qe0zew2lv0e8ru6qe4fk9ytaycsueyagpt53hxdrg457fdsuzcnqq</a
+                  ></span
+                >
+                <button
+                  onClick="copyNostr(this)"
+                  type="button"
+                  class="btn btn-sm btn-outline-secondary"
+                  data-bs-toggle="tooltip"
+                  title="copy NOSTR pubkey"
+                >
+                  <i class="fa-solid fa-copy"></i> copy
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- <div class="card">
+          <table class="table table-dark table-striped">
+            <thead>
+              <tr>
+                <th>test</th>
+                <th>test</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>asdf</td>
+                <td>asdf</td>
+              </tr>
+              <tr>
+                <td>asdf</td>
+                <td>asdf</td>
+              </tr>
+              <tr>
+                <td>asdf</td>
+                <td>asdf</td>
+              </tr>
+            </tbody>
+          </table>
+        </div> -->
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title glow">
+              <i class="fa-solid fa-link"></i> Connect
+            </p>
+            <hr />
+            <p class="card-text">clearnet (ipv4 recommended for stability)</p>
+            <p>
+              Buy channels
+              <a
+                href="https://amboss.space/magma/offer/2b0524c0-26ab-4e96-a453-3e6301a824fd"
+                target="off"
+                >from Magma</a
+              >
+            </p>
+          </div>
+        </div>
       </div>
       <footer>
         <div id="sbfanim">
@@ -465,6 +530,12 @@
         await copyToClipboard(
           e,
           "026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2@@adbn42l4svmgz6i44s4jt2pqngyq5h6bpz6frcgv7yxvf3hkukftheqd.onion:9735"
+        );
+      };
+      const copyNostr = async (e) => {
+        await copyToClipboard(
+          e,
+          "npub1tvlw9qe0zew2lv0e8ru6qe4fk9ytaycsueyagpt53hxdrg457fdsuzcnqq"
         );
       };
       (async () => {
