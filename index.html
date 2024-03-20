@@ -19,6 +19,7 @@
       body {
         background-color: #202823;
         font-family: monospace;
+        word-break: normal;
       }
       p {
         color: transparent;
@@ -51,7 +52,9 @@
       }
       #content ul li {
         visibility: hidden;
-        word-break:break-all;
+      }
+      .key {
+        word-break: break-all;
       }
       .shell {
         background-color: #000;
@@ -283,12 +286,45 @@
           <li><hr /></li>
           <li>
             <i class="fa-solid fa-key"></i> PUBKEY:
-            026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2
+            <span class="key"
+              >026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2</span
+            >
+            <button
+              onClick="copyPub(this)"
+              type="button"
+              class="btn btn-sm btn-outline-secondary"
+              data-bs-toggle="tooltip"
+              title="copy pubkey"
+            >
+              <i class="fa-solid fa-copy"></i> copy
+            </button>
           </li>
-          <li><i class="fa-solid fa-globe"></i> ipv4: @5.78.104.214:38297</li>
+          <li>
+            <i class="fa-solid fa-globe"></i> ipv4: @5.78.104.214:38297
+            <button
+              onClick="copyIP(this)"
+              type="button"
+              class="btn btn-sm btn-outline-secondary"
+              data-bs-toggle="tooltip"
+              title="copy full ipv4 connection string"
+            >
+              <i class="fa-solid fa-copy"></i> copy
+            </button>
+          </li>
           <li>
             <i class="fa-solid fa-user-secret"></i> tor:
-            @adbn42l4svmgz6i44s4jt2pqngyq5h6bpz6frcgv7yxvf3hkukftheqd.onion:9735
+            <span class="key"
+              >@adbn42l4svmgz6i44s4jt2pqngyq5h6bpz6frcgv7yxvf3hkukftheqd.onion:9735</span
+            >
+            <button
+              onClick="copyTor(this)"
+              type="button"
+              class="btn btn-sm btn-outline-secondary"
+              data-bs-toggle="tooltip"
+              title="copy full TOR connection string"
+            >
+              <i class="fa-solid fa-copy"></i> copy
+            </button>
           </li>
           <li>
             <i class="fa-brands fa-telegram"></i> Telegram:
@@ -302,7 +338,9 @@
           </li>
           <li>
             <i class="fa-solid fa-mask"></i> NOSTR:
-            npub1tvlw9qe0zew2lv0e8ru6qe4fk9ytaycsueyagpt53hxdrg457fdsuzcnqq
+            <span class="key"
+              >npub1tvlw9qe0zew2lv0e8ru6qe4fk9ytaycsueyagpt53hxdrg457fdsuzcnqq</span
+            >
           </li>
         </ul>
       </div>
@@ -316,13 +354,51 @@
       src="https://kit.fontawesome.com/495da53e10.js"
       crossorigin="anonymous"
     ></script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
     <script>
+      const copyToClipboard = async (e, str) => {
+        await navigator.clipboard.writeText(str);
+        const tooltip = bootstrap.Tooltip.getInstance(e);
+        const oldTitle = e.title;
+        tooltip.dispose();
+        e.title = "copied ✮";
+        const newTT = new bootstrap.Tooltip(e);
+        newTT.show();
+        // setTimeout(() => {
+        //   const TT = bootstrap.Tooltip.getInstance(e);
+        //   TT.dispose();
+        //   e.title = oldTitle;
+        //   new bootstrap.Tooltip(e);
+        // }, 1000);
+      };
+      const copyPub = async (e) =>
+        await copyToClipboard(
+          e,
+          "026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2"
+        );
+      const copyIP = async (e) =>
+        await copyToClipboard(
+          e,
+          "026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2@5.78.104.214:38297"
+        );
+      const copyTor = async (e) => {
+        await copyToClipboard(
+          e,
+          "026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2@@adbn42l4svmgz6i44s4jt2pqngyq5h6bpz6frcgv7yxvf3hkukftheqd.onion:9735"
+        );
+      };
       (async () => {
+        [].slice
+          .call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+          .map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+          });
+
         const rand = (min, max) =>
           Math.floor(Math.random() * (max - min + 1)) + min;
         let sequenceIndex = 0;
