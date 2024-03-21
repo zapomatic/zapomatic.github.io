@@ -443,8 +443,9 @@
                       present (meaning your node did not go offline via an
                       intentional, safe process and you are risking a
                       force-close), the channel may be scheduled for a co-op
-                      close when fees are low. If you open the channel, the risk
-                      is yours.
+                      close when fees are low. If you were the channel opener
+                      and are going offline with live HTLCs unsettled, the risk
+                      is yours and we will take no action.
                     </li>
                     <li>
                       <i class="fa-solid fa-calculator"></i> Base-Fee is zero
