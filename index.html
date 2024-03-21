@@ -21,7 +21,9 @@
         font-family: monospace;
         word-break: normal;
       }
-      .glow {
+      .glow,
+      .fa-solid,
+      .fa-brands {
         color: transparent;
         margin: 0;
         font-weight: normal;
@@ -54,9 +56,14 @@
       #content {
         visibility: hidden;
         margin: 5px 0 50px;
+        padding: 0;
       }
       #content ul li {
         visibility: hidden;
+      }
+      #content li .fa-brands,
+      #content li .fa-solid {
+        opacity: 0.8;
       }
       .key {
         word-break: break-all;
@@ -67,7 +74,7 @@
         position: relative;
         z-index: 2;
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
-        margin: 0 0 10px 0;
+        /* margin: 10px; */
       }
       .card-header {
         border-bottom: 1px solid #333;
@@ -275,146 +282,179 @@
       </header>
 
       <div id="content">
-        <div class="card">
-          <div class="card-body">
-            <ul>
-              <li>
-                <span class="glow"
-                  ><i class="fa fa-bolt"></i> Zap-O-Matic Lightning Routing
-                  Node:</span
-                >
-                <a
-                  href="https://amboss.space/node/026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2"
-                  target="offsite"
-                  >Amboss</a
-                >
-                |
-                <a
-                  href="https://lightningnetwork.plus/nodes/026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2"
-                  target="offsite"
-                  >LN+</a
-                >
-                |
-                <a
-                  href="https://terminal.lightning.engineering/explore/026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2/"
-                  target="offline"
-                  >Terminal</a
-                >
-              </li>
-              <li><hr /></li>
-              <li>
-                <i class="fa-solid fa-key"></i> PUBKEY:
-                <span class="key"
-                  >026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2</span
-                >
-                <button
-                  onClick="copyPub(this)"
-                  type="button"
-                  class="btn btn-sm btn-outline-secondary"
-                  data-bs-toggle="tooltip"
-                  title="copy pubkey"
-                >
-                  <i class="fa-solid fa-copy"></i> copy
-                </button>
-              </li>
-              <li>
-                <i class="fa-solid fa-globe"></i> IPv4: @5.78.104.214:38297
-                <button
-                  onClick="copyIP(this)"
-                  type="button"
-                  class="btn btn-sm btn-outline-secondary"
-                  data-bs-toggle="tooltip"
-                  title="copy full ipv4 connection string"
-                >
-                  <i class="fa-solid fa-copy"></i> copy
-                </button>
-              </li>
-              <li>
-                <i class="fa-solid fa-user-secret"></i> TOR:
-                <span class="key"
-                  >@adbn42l4svmgz6i44s4jt2pqngyq5h6bpz6frcgv7yxvf3hkukftheqd.onion:9735</span
-                >
-                <button
-                  onClick="copyTor(this)"
-                  type="button"
-                  class="btn btn-sm btn-outline-secondary"
-                  data-bs-toggle="tooltip"
-                  title="copy full TOR connection string"
-                >
-                  <i class="fa-solid fa-copy"></i> copy
-                </button>
-              </li>
-              <li>
-                <i class="fa-brands fa-telegram"></i> TELEGRAM:
-                <a href="https://t.me/zap_matic" target="offsite">@zap_matic</a>
-              </li>
-              <li>
-                <i class="fa-brands fa-twitter"></i> X:
-                <a href="https://twitter.com/zap_matic" target="offsite"
-                  >@zap_matic</a
-                >
-              </li>
-              <li>
-                <i class="fa-solid fa-mask"></i> NOSTR:
-                <span class="key"
-                  ><a
-                    href="https://primal.net/p/npub1tvlw9qe0zew2lv0e8ru6qe4fk9ytaycsueyagpt53hxdrg457fdsuzcnqq"
-                    tartget="offsite"
-                    >npub1tvlw9qe0zew2lv0e8ru6qe4fk9ytaycsueyagpt53hxdrg457fdsuzcnqq</a
-                  ></span
-                >
-                <button
-                  onClick="copyNostr(this)"
-                  type="button"
-                  class="btn btn-sm btn-outline-secondary"
-                  data-bs-toggle="tooltip"
-                  title="copy NOSTR pubkey"
-                >
-                  <i class="fa-solid fa-copy"></i> copy
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- <div class="card">
-          <table class="table table-dark table-striped">
-            <thead>
-              <tr>
-                <th>test</th>
-                <th>test</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>asdf</td>
-                <td>asdf</td>
-              </tr>
-              <tr>
-                <td>asdf</td>
-                <td>asdf</td>
-              </tr>
-              <tr>
-                <td>asdf</td>
-                <td>asdf</td>
-              </tr>
-            </tbody>
-          </table>
-        </div> -->
-        <div class="card">
-          <div class="card-body">
-            <p class="card-title glow">
-              <i class="fa-solid fa-link"></i> Connect
-            </p>
-            <hr />
-            <p class="card-text">clearnet (ipv4 recommended for stability)</p>
-            <p>
-              Buy channels
-              <a
-                href="https://amboss.space/magma/offer/2b0524c0-26ab-4e96-a453-3e6301a824fd"
-                target="off"
-                >from Magma</a
-              >
-            </p>
+        <div class="container">
+          <div class="row gy-3 gx-4">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <ul>
+                    <li>
+                      <span class="glow"
+                        ><i class="fa fa-bolt"></i> Zap-O-Matic Lightning
+                        Routing Node:</span
+                      >
+                      <a
+                        href="https://amboss.space/node/026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2"
+                        target="offsite"
+                        >Amboss</a
+                      >
+                      |
+                      <a
+                        href="https://lightningnetwork.plus/nodes/026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2"
+                        target="offsite"
+                        >LN+</a
+                      >
+                      |
+                      <a
+                        href="https://terminal.lightning.engineering/explore/026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2/"
+                        target="offline"
+                        >Terminal</a
+                      >
+                    </li>
+                    <li><hr /></li>
+                    <li>
+                      <i class="fa-solid fa-key"></i> PUBKEY:
+                      <span class="key"
+                        >026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2</span
+                      >
+                      <button
+                        onClick="copyPub(this)"
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                        data-bs-toggle="tooltip"
+                        title="copy pubkey"
+                      >
+                        <i class="fa-solid fa-copy"></i> copy
+                      </button>
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-globe"></i> IPv4:
+                      @5.78.104.214:38297
+                      <button
+                        onClick="copyIP(this)"
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                        data-bs-toggle="tooltip"
+                        title="copy full ipv4 connection string"
+                      >
+                        <i class="fa-solid fa-copy"></i> copy
+                      </button>
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-user-secret"></i> TOR:
+                      <span class="key"
+                        >@adbn42l4svmgz6i44s4jt2pqngyq5h6bpz6frcgv7yxvf3hkukftheqd.onion:9735</span
+                      >
+                      <button
+                        onClick="copyTor(this)"
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                        data-bs-toggle="tooltip"
+                        title="copy full TOR connection string"
+                      >
+                        <i class="fa-solid fa-copy"></i> copy
+                      </button>
+                    </li>
+                    <li>
+                      <i class="fa-brands fa-telegram"></i> TELEGRAM:
+                      <a href="https://t.me/zap_matic" target="offsite"
+                        >@zap_matic</a
+                      >
+                    </li>
+                    <li>
+                      <i class="fa-brands fa-twitter"></i> X:
+                      <a href="https://twitter.com/zap_matic" target="offsite"
+                        >@zap_matic</a
+                      >
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-mask"></i> NOSTR:
+                      <span class="key"
+                        ><a
+                          href="https://primal.net/p/npub1tvlw9qe0zew2lv0e8ru6qe4fk9ytaycsueyagpt53hxdrg457fdsuzcnqq"
+                          tartget="offsite"
+                          >npub1tvlw9qe0zew2lv0e8ru6qe4fk9ytaycsueyagpt53hxdrg457fdsuzcnqq</a
+                        ></span
+                      >
+                      <button
+                        onClick="copyNostr(this)"
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                        data-bs-toggle="tooltip"
+                        title="copy NOSTR pubkey"
+                      >
+                        <i class="fa-solid fa-copy"></i> copy
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <div class="card">
+                <div class="card-body">
+                  <ul>
+                    <li class="card-title glow">
+                      <i class="fa-solid fa-link"></i> Connect
+                    </li>
+                    <li><hr /></li>
+                    <li>
+                      <i class="fa-solid fa-globe"></i> Clearnet (ipv4)
+                      recommended for stability
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-droplet"></i> Buy inbound liquidity
+                      <a
+                        href="https://amboss.space/magma/offer/2b0524c0-26ab-4e96-a453-3e6301a824fd"
+                        target="off"
+                        >via Magma</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <div class="card">
+                <div class="card-body">
+                  <ul>
+                    <li class="card-title glow">
+                      <i class="fa-solid fa-file-contract"></i> Policies
+                    </li>
+                    <li><hr /></li>
+                    <li>
+                      <i class="fa-solid fa-money-check"></i> Fees start high
+                      and auto-drop to 0 to encourage flow.
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-scale-balanced"></i> If our fees are
+                      zero, and sats are on our side, it's up to you to
+                      rebalance.
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-sliders"></i> If all sats are on zap
+                      side and no movement happens for 30 days, channel may be
+                      scheduled for co-op close.
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-square-xmark"></i> If we are the
+                      channel opener and the partner node is found to have many
+                      long periods of offline time while pending HTLCs are
+                      present (meaning your node did not go offline via an
+                      intentional, safe process and you are risking a
+                      force-close), the channel may be scheduled for a co-op
+                      close when fees are low. If you open the channel, the risk
+                      is yours.
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-calculator"></i> Base-Fee is zero
+                      for most but will be .001-1 on some channels that see high
+                      count of low value routes.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
