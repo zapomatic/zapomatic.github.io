@@ -509,12 +509,6 @@
         e.title = "copied ✮";
         const newTT = new bootstrap.Tooltip(e);
         newTT.show();
-        // setTimeout(() => {
-        //   const TT = bootstrap.Tooltip.getInstance(e);
-        //   TT.dispose();
-        //   e.title = oldTitle;
-        //   new bootstrap.Tooltip(e);
-        // }, 1000);
       };
       const copyPub = async (e) =>
         await copyToClipboard(
@@ -602,7 +596,7 @@
           sbfanimIndex++;
           if (sbfanimIndex === sbfanim.length) sbfanimIndex = 0;
           sbfanim[sbfanimIndex].style.display = "block";
-        }, 200);
+        }, 160);
       })();
     </script>
   </body>
