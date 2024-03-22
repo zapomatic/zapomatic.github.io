@@ -33,6 +33,13 @@
           3px 0 6px rgba(0, 255, 0, 0.3), -3px 0 6px rgba(0, 255, 0, 0.3),
           5px 0 8px rgba(0, 255, 0, 0.1), -5px 0 8px rgba(0, 255, 0, 0.1);
       }
+      .mute {
+        opacity: 0.7;
+      }
+      li > .fa-solid,
+      li > .fa-brands {
+        width: 1.1em;
+      }
       body {
         /* background-color: #333; */
         color: #8ed6b7;
@@ -64,6 +71,9 @@
       #content li .fa-brands,
       #content li .fa-solid {
         opacity: 0.8;
+      }
+      #content li .btn {
+        font-size: 0.8em;
       }
       .key {
         word-break: break-all;
@@ -287,7 +297,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <ul>
+                  <ul class="list-group">
                     <li>
                       <span class="glow"
                         ><i class="fa fa-bolt"></i> Zap-O-Matic Lightning
@@ -341,7 +351,8 @@
                       </button>
                     </li>
                     <li>
-                      <i class="fa-solid fa-user-secret"></i> TOR:
+                      <i class="fa-solid fa-user-secret"></i>
+                      TOR:
                       <span class="key"
                         >@adbn42l4svmgz6i44s4jt2pqngyq5h6bpz6frcgv7yxvf3hkukftheqd.onion:9735</span
                       >
@@ -356,19 +367,33 @@
                       </button>
                     </li>
                     <li>
-                      <i class="fa-brands fa-telegram"></i> TELEGRAM:
+                      <i class="fa-brands fa-telegram"></i>
+
+                      TELEGRAM:
                       <a href="https://t.me/zap_matic" target="offsite"
                         >@zap_matic</a
                       >
                     </li>
                     <li>
-                      <i class="fa-brands fa-twitter"></i> X:
+                      <i class="fa-brands fa-twitter"></i>
+
+                      X:
                       <a href="https://twitter.com/zap_matic" target="offsite"
                         >@zap_matic</a
                       >
+                      <!-- <a
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                        href="https://twitter.com/zap_matic"
+                        target="offsite"
+                      >
+                        <i class="fa-brands fa-opera"></i> open
+                      </a> -->
                     </li>
                     <li>
-                      <i class="fa-solid fa-mask"></i> NOSTR:
+                      <i class="fa-solid fa-mask"></i>
+
+                      NOSTR:
                       <span class="key"
                         ><a
                           href="https://primal.net/p/npub1tvlw9qe0zew2lv0e8ru6qe4fk9ytaycsueyagpt53hxdrg457fdsuzcnqq"
@@ -428,29 +453,31 @@
                     </li>
                     <li>
                       <i class="fa-solid fa-scale-balanced"></i> If our fees are
-                      zero, and sats are on our side, it's up to you to
-                      rebalance.
+                      zero, and sats are stuck on our side, you will need to
+                      rebalance or reduce your outbound fees to other channels
+                      to enable flow.
                     </li>
                     <li>
-                      <i class="fa-solid fa-sliders"></i> If all sats are on zap
-                      side and no movement happens for 30 days, channel may be
-                      scheduled for co-op close.
+                      <i class="fa-solid fa-sliders"></i> If 90%+ sats are on
+                      our side and no movement happens for a long time (e.g. 30+
+                      days), channel may be scheduled for co-op close (will aim
+                      for low on-chain fee time).
                     </li>
                     <li>
                       <i class="fa-solid fa-square-xmark"></i> If we are the
                       channel opener and the partner node is found to have many
                       long periods of offline time while pending HTLCs are
-                      present (meaning your node did not go offline via an
-                      intentional, safe process and you are risking a
+                      present (meaning the partner node did not go offline via
+                      an intentional, safe process and is risking a
                       force-close), the channel may be scheduled for a co-op
-                      close when fees are low. If you were the channel opener
-                      and are going offline with live HTLCs unsettled, the risk
-                      is yours and we will take no action.
+                      close when fees are low. If you are the channel opener and
+                      are going offline with live HTLCs unsettled, the risk is
+                      yours and we will take no action.
                     </li>
                     <li>
                       <i class="fa-solid fa-calculator"></i> Base-Fee is zero
                       for most but will be .001-1 on some channels that see high
-                      count of low value routes.
+                      count of low value routes (charging for spam).
                     </li>
                   </ul>
                 </div>
@@ -478,52 +505,52 @@
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞₎₎=͟͟͞͞˳॰° ₒ ৹   ๐   ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞ ₎=͟͟͞͞˳˚॰° ₒ ৹   ๐  ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞₎ =͟͟͞͞  ˚॰° ₒ ৹   ๐ ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞₎₎=͟͟   ˚॰° ₒ ৹   ๐▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞₎₎=͟͟   ˚॰° ₒ ৹   ๐<span class="glow">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞ ₎=͟˳   ˚॰° ₒ ৹    ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞₎ =͟͟͞͞˳๐   ˚॰° ₒ ৹   ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞₎₎=͟͟͞͞˳৹๐   ˚॰° ₒ ৹  ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞ ₎=͟͟͞͞˳ₒ৹๐   ˚॰° ₒ ৹ ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞₎ =͟͟͞͞˳°ₒ৹๐   ˚॰° ₒ ৹▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞₎ =͟͟͞͞˳°ₒ৹๐   ˚॰° ₒ ৹<span class="glow">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞₎₎=͟͟͞͞˳॰°ₒ৹๐   ˚॰° ₒ  ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞ ₎=͟͟͞͞˳ ˚॰°ₒ৹๐   ˚॰°ₒ ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞₎ =͟͟͞͞   ˚॰°ₒ৹๐   ˚॰°ₒ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞₎ =͟͟͞͞   ˚॰°ₒ৹๐   ˚॰°ₒ<span class="glow">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞ ₎=͟͟˳   ˚॰°ₒ৹๐   ˚॰° ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞₎ =͟͟     ˚॰°ₒ৹๐   ˚॰°▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞₎ =͟͟     ˚॰°ₒ৹๐   ˚॰°<span class="glow">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞ ₎=      ˚॰°ₒ৹๐   ˚॰ ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞₎ =͟       ˚॰°ₒ৹๐   ˚॰▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞₎ =͟       ˚॰°ₒ৹๐   ˚॰<span class="glow">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞ ₎˳        ˚॰°ₒ৹๐   ˚ ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞₎           ˚॰°ₒ৹๐   ˚▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞₎           ˚॰°ₒ৹๐   ˚<span class="glow">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞             ˚॰°ₒ৹๐    ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞              ˚॰°ₒ৹๐   ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞               ˚॰°ₒ৹๐  ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞                ˚॰°ₒ৹๐ ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                 ˚॰°ₒ৹๐▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                 ˚॰°ₒ৹๐<span class="glow">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞                  ˚॰°ₒ৹ ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                   ˚॰°ₒ৹▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                   ˚॰°ₒ৹<span class="glow">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞                    ˚॰°ₒ ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                     ˚॰°ₒ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                     ˚॰°ₒ<span class="glow">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞                      ˚॰° ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                       ˚॰°▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                       ˚॰°<span class="glow">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞                        ˚॰ ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                         ˚॰▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                         ˚॰<span class="glow">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞                          ˚ ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                           ˚▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                           ˚<span class="glow">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞                             ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                            ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                           ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                          ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                         ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                        ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                       ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                      ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                     ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                    ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                   ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞!                 ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                            <span class="mute">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                           <span class="mute">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                          <span class="mute">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                         <span class="mute">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                        <span class="mute">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                       <span class="mute">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                      <span class="mute">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                     <span class="mute">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                    <span class="mute">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞                   <span class="mute">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞<span class="glow">!</span>                 <span class="mute">▌</span>▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞                 ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞!                ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞<span class="glow">!</span>                ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
           <pre>˭̡̞(◞⁎˃ᆺ˂)◞                 ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
-          <pre>˭̡̞(◞⁎˃ᆺ˂)◞!                ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
+          <pre>˭̡̞(◞⁎˃ᆺ˂)◞<span class="glow">!</span>                ▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌▌</pre>
         </div>
       </footer>
       <div id="scanlines"></div>
