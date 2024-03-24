@@ -424,8 +424,17 @@
                     </li>
                     <li><hr /></li>
                     <li>
-                      <i class="fa-solid fa-globe"></i> Clearnet (ipv4)
-                      recommended for stability
+                      <i class="fa-solid fa-globe"></i> Clearnet recommended for
+                      stability
+                      <button
+                        onClick="copyIP(this)"
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                        data-bs-toggle="tooltip"
+                        title="copy full ipv4 connection string"
+                      >
+                        <i class="fa-solid fa-copy"></i> copy
+                      </button>
                     </li>
                     <li>
                       <i class="fa-solid fa-droplet"></i> Buy inbound liquidity
@@ -434,6 +443,9 @@
                         target="off"
                         >via Magma</a
                       >
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-face-smile"></i> Happy routing
                     </li>
                   </ul>
                 </div>
