@@ -68,6 +68,10 @@
       #content ul li {
         visibility: hidden;
       }
+      #content ul ul li {
+        margin-left: 2.5em;
+        padding-left: 10px;
+      }
       #content li .fa-brands,
       #content li .fa-solid {
         opacity: 0.8;
@@ -292,9 +296,9 @@
       </header>
 
       <div id="content">
-        <div class="container">
-          <div class="row gy-3 gx-4">
-            <div class="col-12">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12 mb-4">
               <div class="card">
                 <div class="card-body">
                   <ul class="list-group">
@@ -415,7 +419,9 @@
                 </div>
               </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+          </div>
+          <div class="row" data-masonry='{"percentPosition": true }'>
+            <div class="col-xs-12 col-md-6 mb-4">
               <div class="card">
                 <div class="card-body">
                   <ul>
@@ -451,7 +457,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="col-xs-12 col-md-6 mb-4">
               <div class="card">
                 <div class="card-body">
                   <ul>
@@ -496,6 +502,38 @@
                       <i class="fa-solid fa-calculator"></i> Base-Fee is zero
                       for most but will be .001-1 on some channels that see high
                       count of low value routes (charging for spam).
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-6 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <ul>
+                    <li class="card-title glow">
+                      <i class="fa-solid fa-store"></i> Merchants
+                    </li>
+                    <li><hr /></li>
+                    <li>
+                      <i class="fa-brands fa-telegram"></i>
+                      Let us know your needs and we can arrange for higher/fixed
+                      rates and auto-rebalancing to ensure inbound availability
+                      to your node.
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-wallet"></i> We route to/from
+                      wallets:
+                      <ul>
+                        <li><i class="fa-solid fa-star"></i> Phoenix</li>
+                        <li>
+                          <i class="fa-solid fa-star"></i> Wallet Of Satoshi
+                        </li>
+                        <li><i class="fa-solid fa-star"></i> CWallet</li>
+                        <li><i class="fa-solid fa-star"></i> Alby</li>
+                        <li><i class="fa-solid fa-star"></i> Cash App</li>
+                        <li><i class="fa-solid fa-star"></i> more...</li>
+                      </ul>
                     </li>
                   </ul>
                 </div>
@@ -580,11 +618,16 @@
       src="https://kit.fontawesome.com/495da53e10.js"
       crossorigin="anonymous"
     ></script>
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+      integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D"
+      crossorigin="anonymous"
+      async
     ></script>
     <script>
       const copyToClipboard = async (e, str) => {
