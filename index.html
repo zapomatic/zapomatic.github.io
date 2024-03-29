@@ -280,6 +280,10 @@
         display: none;
         overflow: hidden;
       }
+
+      code {
+        color: #537259;
+      }
     </style>
   </head>
   <body>
@@ -447,6 +451,20 @@
                         target="off"
                         >via Magma</a
                       >
+                      or via
+                      <code
+                        >bos get-inbound-channel
+                        026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2
+                        <button
+                          onClick="copyBOS(this)"
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                          data-bs-toggle="tooltip"
+                          title="copy bos command"
+                        >
+                          <i class="fa-solid fa-copy"></i> copy
+                        </button></code
+                      >
                     </li>
                     <li>
                       <i class="fa-solid fa-face-smile"></i> Happy routing
@@ -520,8 +538,8 @@
                       to your node.
                     </li>
                     <li>
-                      <i class="fa-solid fa-wallet"></i> We route to/from
-                      wallets:
+                      <i class="fa-solid fa-wallet"></i> We route (directly)
+                      to/from wallets:
                       <ul>
                         <li><i class="fa-solid fa-star"></i> Phoenix</li>
                         <li>
@@ -530,7 +548,9 @@
                         <li><i class="fa-solid fa-star"></i> Olympus</li>
                         <li><i class="fa-solid fa-star"></i> CWallet</li>
                         <li><i class="fa-solid fa-star"></i> Alby</li>
-                        <li><i class="fa-solid fa-star"></i> Cash App</li>
+                        <li>
+                          <i class="fa-solid fa-star"></i> Cash App (2 hops)
+                        </li>
                         <li><i class="fa-solid fa-star"></i> more...</li>
                       </ul>
                     </li>
@@ -647,6 +667,11 @@
         await copyToClipboard(
           e,
           "026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2@5.78.104.214:38297"
+        );
+      const copyBOS = async (e) =>
+        await copyToClipboard(
+          e,
+          "bos get-inbound-channel 026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2"
         );
       const copyTor = async (e) => {
         await copyToClipboard(
