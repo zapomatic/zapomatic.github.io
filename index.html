@@ -69,12 +69,26 @@
         visibility: hidden;
       }
       #content ul ul li {
-        margin-left: 1.7em;
+        margin-left: 1.5em;
         padding-left: 0;
+        left: 0;
       }
-      #content li .fa-brands,
-      #content li .fa-solid {
+      #content li i {
         opacity: 0.8;
+        margin-right: 0.5em;
+      }
+      .card-body li {
+        padding-right: 2em;
+        position: relative;
+        left: 2em;
+      }
+      .card-body li > i {
+        position: absolute;
+        left: -1.5em;
+        top: 0.2em;
+      }
+      .card-body li.card-title > i {
+        top: 0;
       }
       #content li .btn {
         font-size: 0.8em;
@@ -94,7 +108,7 @@
         border-bottom: 1px solid #333;
       }
       .card-body {
-        padding: 10px;
+        padding: 0.8em 0.2em;
       }
       .card hr {
         margin: 0.5rem 0;
@@ -305,9 +319,9 @@
                 <div class="card-body">
                   <ul class="list-group">
                     <li>
+                      <i class="fa fa-bolt glow"></i>
                       <span class="glow"
-                        ><i class="fa fa-bolt"></i> Zap-O-Matic Lightning
-                        Routing Node:</span
+                        >Zap-O-Matic Lightning Routing Node:</span
                       >
                       <a
                         href="https://amboss.space/node/026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2"
@@ -329,7 +343,7 @@
                     </li>
                     <li><hr /></li>
                     <li>
-                      <i class="fa-solid fa-key"></i> PUBKEY:
+                      <i class="fa-solid fa-key"></i> PUBKEY:&nbsp;
                       <span class="key"
                         >026d0169e8c220d8e789de1e7543f84b9041bbb3e819ab14b9824d37caa94f1eb2</span
                       >
@@ -358,7 +372,7 @@
                     </li>
                     <li>
                       <i class="fa-solid fa-user-secret"></i>
-                      TOR:
+                      TOR:&nbsp;
                       <span class="key"
                         >@adbn42l4svmgz6i44s4jt2pqngyq5h6bpz6frcgv7yxvf3hkukftheqd.onion:9735</span
                       >
@@ -375,7 +389,7 @@
                     <li>
                       <i class="fa-brands fa-telegram"></i>
 
-                      TELEGRAM:
+                      TELEGRAM:&nbsp;
                       <a href="https://t.me/zap_matic" target="offsite"
                         >@zap_matic</a
                       >
@@ -482,15 +496,16 @@
                     </li>
                     <li><hr /></li>
                     <li>
-                      <i class="fa-solid fa-money-check"></i> Fees start high
-                      and auto-drop to 0 to encourage flow.
+                      <i class="fa-solid fa-money-check"></i>
+                      Fees start high and auto-drop to 0 to encourage flow.
                     </li>
                     <li>
-                      <i class="fa-solid fa-scale-balanced"></i> If our fees are
-                      zero, and sats are stuck on our side, you will need to
-                      rebalance or reduce your outbound fees to other channels
-                      to enable flow. You can also install PeerSwap and use
-                      L-BTC to swap the sats back in to your side.
+                      <i class="fa-solid fa-scale-balanced"></i>
+                      If our fees are zero, and sats are stuck on our side, you
+                      will need to rebalance or reduce your outbound fees to
+                      other channels to enable flow. You can also install
+                      PeerSwap and use L-BTC to swap the sats back in to your
+                      side.
                     </li>
                     <li>
                       <i class="fa-solid fa-right-left"></i> When swapping with
@@ -498,21 +513,23 @@
                       efficient (lower PPM equivalent).
                     </li>
                     <li>
-                      <i class="fa-solid fa-sliders"></i> If 90%+ sats are on
-                      our side and no movement happens for a long time (e.g. 30+
-                      days), channel may be scheduled for co-op close (will aim
-                      for low on-chain fee time).
+                      <i class="fa-solid fa-sliders"></i>
+                      If 90%+ sats are on our side and no movement happens for a
+                      long time (e.g. 30+ days), channel may be scheduled for
+                      co-op close (will aim for low on-chain fee time).
                     </li>
                     <li>
-                      <i class="fa-solid fa-square-xmark"></i> If we are the
-                      channel opener and the partner node is found to have many
-                      long periods of offline time while pending HTLCs are
-                      present (meaning the partner node did not go offline via
-                      an intentional, safe process and is risking a
-                      force-close), the channel may be scheduled for a co-op
-                      close when fees are low. If you are the channel opener and
-                      are going offline with live HTLCs unsettled, the risk is
-                      yours and we will take no action.
+                      <i class="fa-solid fa-square-xmark"></i>
+                      <span
+                        >If we are the channel opener and the partner node is
+                        found to have many long periods of offline time while
+                        pending HTLCs are present (meaning the partner node did
+                        not go offline via an intentional, safe process and is
+                        risking a force-close), the channel may be scheduled for
+                        a co-op close when fees are low. If you are the channel
+                        opener and are going offline with live HTLCs unsettled,
+                        the risk is yours and we will take no action.</span
+                      >
                     </li>
                     <li>
                       <i class="fa-solid fa-calculator"></i> Base-Fee is zero
