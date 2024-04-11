@@ -492,12 +492,23 @@
                 <div class="card-body">
                   <ul>
                     <li class="card-title glow">
-                      <i class="fa-solid fa-file-contract"></i> Policies
+                      <i class="fa-solid fa-file-contract"></i> Fee/Balance
+                      Policies
                     </li>
                     <li><hr /></li>
                     <li>
                       <i class="fa-solid fa-money-check"></i>
-                      Fees start high and auto-drop to 0 to encourage flow.
+                      Once we have sats on our side, we start fees typically at
+                      2000 PPM and 0 Base, then hourly reduce the fees over
+                      several days until either demand appears or the rate goes
+                      to 0 PPM. We then reassess based on the channel activity
+                      to find an appropriate static fee rate. This may be
+                      updated periodically but we typically aim to have 0.5x the
+                      fee of our partner when the sats are mostly on our side
+                      and a 2x rate to our partner when sats are on the other
+                      side. This can change per channel partner depending on
+                      PeerSwap activity, assisted revenue, and frequency of
+                      channel use.
                     </li>
                     <li>
                       <i class="fa-solid fa-scale-balanced"></i>
@@ -505,7 +516,18 @@
                       will need to rebalance or reduce your outbound fees to
                       other channels to enable flow. You can also install
                       PeerSwap and use L-BTC to swap the sats back in to your
-                      side.
+                      side using "swap in". If there is no movement for 7 days
+                      with 90% of liquidity on our side, we will attempt a "swap
+                      out" for L-BTC using PeerSwap. If this does not succeed
+                      (the other side does not have sufficient L-BTC to swap or
+                      does not have PeerSwap enabled), we will increase fees to
+                      an appropriate level (likely 50% of the partner rate,
+                      unless the partner rate is less than 100 PPM) and wait for
+                      your channel to have egress interest from our channel
+                      partners. We wait the 7 days to give our channel partners
+                      a chance to rebalance to the other side at 0 cost. If we
+                      are the channel opener, we may reduce only to 100 PPM to
+                      prevent free liquidity drain.
                     </li>
                     <li>
                       <i class="fa-solid fa-right-left"></i> When swapping with
@@ -513,28 +535,67 @@
                       efficient (lower PPM equivalent).
                     </li>
                     <li>
-                      <i class="fa-solid fa-sliders"></i>
-                      If 90%+ sats are on our side and no movement happens for a
-                      long time (e.g. 30+ days), channel may be scheduled for
-                      co-op close (will aim for low on-chain fee time).
-                    </li>
-                    <li>
-                      <i class="fa-solid fa-square-xmark"></i>
-                      <span
-                        >If we are the channel opener and the partner node is
-                        found to have many long periods of offline time while
-                        pending HTLCs are present (meaning the partner node did
-                        not go offline via an intentional, safe process and is
-                        risking a force-close), the channel may be scheduled for
-                        a co-op close when fees are low. If you are the channel
-                        opener and are going offline with live HTLCs unsettled,
-                        the risk is yours and we will take no action.</span
-                      >
-                    </li>
-                    <li>
                       <i class="fa-solid fa-calculator"></i> Base-Fee is zero
                       for most but will be .001-1 on some channels that see high
                       count of low value routes (charging for spam).
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-6 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <ul>
+                    <li class="card-title glow">
+                      <i class="fa-solid fa-file-contract"></i> Channel
+                      Open/Close Policies
+                    </li>
+                    <li><hr /></li>
+                    <li>
+                      <i class="fa-regular fa-folder-open"></i>
+                      We are not currently opening dual-funded channels. We are
+                      much more lenient on actions for channels opened by the
+                      other side. If you are a smaller node, please open to us
+                      as we are unlikely to open to you first. Channels that
+                      open to us do not incur negative points for going offline
+                      as the risk of force-closure fees are on the opener and so
+                      are less of a concern for us.
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-sliders"></i>
+                      If 90%+ sats are on our side and no movement happens for a
+                      long time (e.g. 30+ days), channel may be scheduled for
+                      co-op close (will aim for low on-chain fee time). Use
+                      PeerSwap or Rebalance as needed.
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-square-xmark"></i>
+                      If we are the channel opener and the partner node is found
+                      to have many long periods of offline time while pending
+                      HTLCs are present (meaning the partner node did not go
+                      offline via an intentional, safe process and is risking a
+                      force-close), the channel may be scheduled for a co-op
+                      close when fees are low. If you are the channel opener and
+                      are going offline with live HTLCs unsettled, the risk is
+                      yours and we will take no action.
+                    </li>
+
+                    <li>
+                      <i class="fa-solid fa-maximize"></i>
+                      Once a channel proves valuable to our neighbors, we will
+                      open a fatter channel. If we were the original opener, we
+                      will disable the old channel from flowing out of our side
+                      and either rebalance back in or wait for sats to naturally
+                      flow back before closing the smaller channel (so we can
+                      keep our original outbound sats and use them for the next
+                      open). If we were not the channel opener, we will leave
+                      the channel open and allow the other side to close when
+                      and if they choose. Sometimes we will intentionally leave
+                      2 channels open so we can use one for pushing all sats to
+                      the other side as a rebalance output and use the other
+                      channel for bi-directional traffic (e.g. we do this with
+                      ACINQ).
                     </li>
                   </ul>
                 </div>
