@@ -498,36 +498,39 @@
                     <li><hr /></li>
                     <li>
                       <i class="fa-solid fa-money-check"></i>
-                      Once we have sats on our side, we start fees typically at
-                      2000 PPM and 0 Base, then hourly reduce the fees over
-                      several days until either demand appears or the rate goes
-                      to 0 PPM. We then reassess based on the channel activity
-                      to find an appropriate static fee rate. This may be
-                      updated periodically but we typically aim to have 0.5x the
-                      fee of our partner when the sats are mostly on our side
-                      and a 2x rate to our partner when sats are on the other
-                      side. This can change per channel partner depending on
-                      PeerSwap activity, assisted revenue, and frequency of
-                      channel use.
+                      All incoming channels are set to a default fee rate of
+                      2000 PPM + 0 Base. However, once we have sats on our side,
+                      we will choose a fee rate based on several factors (which
+                      side is the channel opener, what the partner fee rate is,
+                      and what demand we see on the channel from other
+                      partners). We will reassess fee rates based on the channel
+                      activity to find an appropriate static fee rate. This may
+                      be updated periodically but we typically aim to have 0.5x
+                      the fee of our partner when the sats are mostly on our
+                      side and a 2x rate to our partner when sats are on the
+                      other side. This can change per channel partner depending
+                      on PeerSwap activity, assisted revenue, and frequency of
+                      channel use. We also set higher rates for channels with
+                      strong demand.
                     </li>
                     <li>
                       <i class="fa-solid fa-scale-balanced"></i>
-                      If our fees are zero, and sats are stuck on our side, you
-                      will need to rebalance or reduce your outbound fees to
-                      other channels to enable flow. You can also install
-                      PeerSwap and use L-BTC to swap the sats back in to your
-                      side using "swap in". If there is no movement for 7 days
-                      with 90% of liquidity on our side, we will attempt a "swap
-                      out" for L-BTC using PeerSwap. If this does not succeed
-                      (the other side does not have sufficient L-BTC to swap or
-                      does not have PeerSwap enabled), we will increase fees to
-                      an appropriate level (likely 50% of the partner rate,
-                      unless the partner rate is less than 100 PPM) and wait for
-                      your channel to have egress interest from our channel
-                      partners. We wait the 7 days to give our channel partners
-                      a chance to rebalance to the other side at 0 cost. If we
-                      are the channel opener, we may reduce only to 100 PPM to
-                      prevent free liquidity drain.
+                      If sats are stuck on our side, you will need to rebalance
+                      or reduce your outbound fees to other channels to enable
+                      flow. You can also install PeerSwap and use L-BTC to swap
+                      the sats back in to your side using "swap in". If there is
+                      no movement for 7 days with 90% of liquidity on our side,
+                      we will attempt a "swap out" for L-BTC using PeerSwap. If
+                      this does not succeed (the other side does not have
+                      sufficient L-BTC to swap or does not have PeerSwap
+                      enabled), we will increase fees to an appropriate level
+                      (likely 50% of the partner rate, unless the partner rate
+                      is less than 100 PPM) and wait for your channel to have
+                      egress interest from our channel partners. We wait the 7
+                      days to give our channel partners a chance to rebalance to
+                      the other side at 0 cost. If we are the channel opener, we
+                      may reduce only to 100 PPM to prevent free liquidity
+                      drain.
                     </li>
                     <li>
                       <i class="fa-solid fa-right-left"></i> When swapping with
@@ -536,8 +539,9 @@
                     </li>
                     <li>
                       <i class="fa-solid fa-calculator"></i> Base-Fee is zero
-                      for most but will be .001-1 on some channels that see high
-                      count of low value routes (charging for spam).
+                      for most but will be adjusted to .001-1 on some channels
+                      that see high count of low value routes (charging for
+                      spam).
                     </li>
                   </ul>
                 </div>
