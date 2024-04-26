@@ -498,39 +498,20 @@
                     <li><hr /></li>
                     <li>
                       <i class="fa-solid fa-money-check"></i>
-                      All incoming channels are set to a default fee rate of
-                      2000 PPM + 0 Base. However, once we have sats on our side,
-                      we will choose a fee rate based on several factors (which
-                      side is the channel opener, what the partner fee rate is,
-                      and what demand we see on the channel from other
-                      partners). We will reassess fee rates based on the channel
-                      activity to find an appropriate static fee rate. This may
-                      be updated periodically but we typically aim to have 0.5x
-                      the fee of our partner when the sats are mostly on our
-                      side and a 2x rate to our partner when sats are on the
-                      other side. This can change per channel partner depending
-                      on PeerSwap activity, assisted revenue, and frequency of
-                      channel use. We also set higher rates for channels with
-                      strong demand.
+                      We are currently experimenting and developing the 
+                      <a href="https://github.com/zapomatic/zap_lnd_tools?tab=readme-ov-file#cooperative-fee-strategy" target=""off">Cooperative Fee Strategy</a>, 
+                      a game-theory optimal fee management system in which it wins even if everyone uses it (and especially well if everyone uses it).
+                      This system is in validation and development phase as fees are adjusted to create balanced channels. We are currently aiming to eliminate failures, so fees may raise up to 1984 if we are seeing demand beyond our capacity and we will rebalance 30% of capacity to our side.
                     </li>
                     <li>
                       <i class="fa-solid fa-scale-balanced"></i>
                       If sats are stuck on our side, you will need to rebalance
                       or reduce your outbound fees to other channels to enable
                       flow. You can also install PeerSwap and use L-BTC to swap
-                      the sats back in to your side using "swap in". If there is
-                      no movement for 7 days with 90% of liquidity on our side,
-                      we will attempt a "swap out" for L-BTC using PeerSwap. If
+                      the sats back in to your side using "swap in". Our fee will drop to 240 after 7 days of no movement from our side. If movement still does not occur for 14 days, we will attempt a "swap out" for L-BTC using PeerSwap. If
                       this does not succeed (the other side does not have
                       sufficient L-BTC to swap or does not have PeerSwap
-                      enabled), we will increase fees to an appropriate level
-                      (likely 50% of the partner rate, unless the partner rate
-                      is less than 100 PPM) and wait for your channel to have
-                      egress interest from our channel partners. We wait the 7
-                      days to give our channel partners a chance to rebalance to
-                      the other side at 0 cost. If we are the channel opener, we
-                      may reduce only to 100 PPM to prevent free liquidity
-                      drain.
+                      enabled), we may lower fees again.
                     </li>
                     <li>
                       <i class="fa-solid fa-right-left"></i> When swapping with
@@ -558,7 +539,7 @@
                     <li><hr /></li>
                     <li>
                       <i class="fa-regular fa-folder-open"></i>
-                      We are not currently opening dual-funded channels. We are
+                      We are <b>not</b> currently opening dual-funded channels. We are
                       much more lenient on actions for channels opened by the
                       other side. If you are a smaller node, please open to us
                       as we are unlikely to open to you first. Channels that
