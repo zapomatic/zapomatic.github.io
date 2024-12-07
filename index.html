@@ -532,6 +532,7 @@
                     <li>
                       <i class="fa-solid fa-calculator"></i> While zero-base fee was a great experiment, only a few channels will get this as we have seen a lot of spam traffic that abuses 0/0 channels so we default to 1 sat base.
                     </li>
+                    <li><i class="fa-solid fa-shield-halved"></i>Private channels are responsible for rebalancing. If they are not rebalanced by the channel opener, they will likely be closed quickly as we cannot rebalance them for you (unless your node has public routes that we find useful).</li>
                   </ul>
                 </div>
               </div>
@@ -587,9 +588,9 @@
                       and if they choose. Sometimes we will intentionally leave
                       2 channels open so we can use one for pushing all sats to
                       the other side as a rebalance output and use the other
-                      channel for bi-directional traffic (e.g. we do this with
-                      ACINQ).
+                      channel for bi-directional traffic.
                     </li>
+                    <li><i class="fa-solid fa-shield-halved"></i>Private channels that drain to our side without rebalancing back are likely to be closed quickly. If you wish to open and maintain private channels with Zap-O-Matic, please contact us to alert us of your routing intent. We may set fees to 0/0 on private channels if you wish to rebalance them and re-use the sats as input.</li>
                   </ul>
                 </div>
               </div>
