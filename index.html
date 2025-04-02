@@ -578,14 +578,7 @@
                     <li>
                       <i class="fa-solid fa-maximize"></i>
                       Once a channel proves valuable to our neighbors, we will
-                      open a fatter channel. If we were the original opener, we
-                      will disable the old channel from flowing out of our side
-                      and either rebalance back in or wait for sats to naturally
-                      flow back before closing the smaller channel (so we can
-                      keep our original outbound sats and use them for the next
-                      open). If we were not the channel opener, we will leave
-                      the channel open and allow the other side to close when
-                      and if they choose. Sometimes we will intentionally leave
+                      open a fatter channel. We may also downsize a channel if it's not moving and has been sitting at a low fee. Sometimes we will intentionally leave
                       2 channels open so we can use one for pushing all sats to
                       the other side as a rebalance output and use the other
                       channel for bi-directional traffic.
